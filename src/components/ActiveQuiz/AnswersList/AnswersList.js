@@ -5,7 +5,14 @@ const AnswersList = (props) => {
   return (
     <ul className={classes.AnswersList}>
       {props.answers.map((answer, i) => {
-        return <AnswerItem answer={answer} key={i} />;
+        return (
+          <AnswerItem
+            state={props.state ? props.state[answer.id] : null}
+            answer={answer}
+            key={i}
+            onAnswerClick={props.onAnswerClick}
+          />
+        );
       })}
     </ul>
   );

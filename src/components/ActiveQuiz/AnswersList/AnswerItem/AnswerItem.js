@@ -1,7 +1,20 @@
 import classes from './AnswerItem.module.css';
 
 const AnswerItem = (props) => {
-  return <li className={classes.AnswerItem}>{props.answer.text}</li>;
+  const cls = [classes.AnswerItem];
+
+  if (props.state !== null) {
+    cls.push(classes[props.state]);
+  }
+
+  return (
+    <li
+      onClick={() => props.onAnswerClick(props.answer.id)}
+      className={cls.join(' ')}
+    >
+      {props.answer.text}
+    </li>
+  );
 };
 
 export default AnswerItem;
